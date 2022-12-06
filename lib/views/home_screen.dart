@@ -7,113 +7,82 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen>
+{
+
+
+
   @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 13),
-            child: Center(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    customText(
-                        txt: "Bienvenido",
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 26,
-                        )),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    customText(
-                        txt:
-                            "Hecho por Carlos Vallejo",
-                        style: const TextStyle(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 14,
-                        )),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    Container(
-                      child: Image.asset("image/vasar.png"),
-                      decoration: BoxDecoration(
-                        
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                    customText(
-                        txt: "Ingresar por redes sociales",
-                        style: const TextStyle(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 14,
-                        )),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      children: [
-                        InkWell(
-                          child: InkwellButtons(
-                              image: Image.asset("image/img3.png")),
-                          onTap: () {},
-                        ),
-                        const SizedBox(width: 37),
-                        InkWell(
-                          child: InkwellButtons(
-                              image: Image.asset("image/img4.png")),
-                          onTap: () {},
+  Widget build(BuildContext context)
+  {
+
+
+    return Scaffold(
+        backgroundColor: Colors.transparent,
+
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color.fromRGBO(205, 193, 255, 1.0),
+              Color.fromARGB(255, 252, 99, 99),
+              Color.fromARGB(255, 173, 41, 1),
+            ],
+          ),
+        ),
+        padding: EdgeInsets.fromLTRB(
+            10,
+            AppBar().preferredSize.height +
+                MediaQuery.of(context).viewPadding.top,
+            10,
+            0),
+        child: Column(
+          children: [
+            Container(
+              alignment: Alignment.center,
+              margin: EdgeInsets.only(top: 300.0,),
+              child: Text("¡Bienvenido!", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 55.0)),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 30.0,),
+              child: Text("¡Ahora estas listo para usar vasar!", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 25.0)),
+            ),
+
+            Container(
+              constraints: BoxConstraints(maxWidth: 250.0, minHeight: 50.0),
+              margin: EdgeInsets.only(top: 30),
+              child: RaisedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const LoginScreen()));
+                },
+                color: Theme.of(context).accentColor,
+                child: Padding(
+                  padding: EdgeInsets.all(0),
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'Vamos!',
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.white,
+                          ),
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                    customText(
-                        txt: "o ingresa por correo",
-                        style: const TextStyle(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 14,
-                        )),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                    InkWell(
-                      child: SignUpContainer(st: "Iniciar Sesión"),
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const SignupScreen()));
-                      },
-                    ),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                    InkWell(
-                      child: RichText(
-                        text: RichTextSpan(
-                            one: "¿No tienes cuenta? ", two: "Iniciar Sesión"),
-                      ),
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const LoginScreen()));
-                      },
-                    ),
-                    //Text("data"),
-                  ],
+                  ),
                 ),
               ),
             ),
-          ),
+
+          ],
         ),
-      ),
+    )
     );
   }
 }
